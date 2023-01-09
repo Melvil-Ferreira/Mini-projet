@@ -1,0 +1,27 @@
+ #!/usr/bin/env python3
+import serial
+import time
+
+with open("mode.txt") as f:
+    mode = f.read()
+    print(mode)
+
+
+try :
+    ser = serial.Serial('/dev/ttyACM0', 9600, timeout=0.5)
+    ser.flush()
+    while True:
+        line = ser.readline().decode('utf-8').rstrip()
+        if line == "4":
+            nombre = randint(1,3)
+            ser.write((str(nombre) + "\n") .encode('utf-8'))
+            print("Le nombre aléatoire est : " + str(nombre))
+            if nombre == 1:
+                print("Led verte allumée")
+            elif nombre == 2:
+                print("Led orange allumée")
+            elif nombre == 3:
+                print("Led rouge allumée")
+
+except KeyboardInterrupt:
+    exit()

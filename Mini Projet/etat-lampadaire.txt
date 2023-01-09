@@ -1,0 +1,1 @@
+ici je vais recuperer l'état des lampadaires envoyé par l'arduino
